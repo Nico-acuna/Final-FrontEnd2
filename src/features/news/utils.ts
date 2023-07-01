@@ -1,20 +1,15 @@
-export const capitalizeWords = (title: string) => {
-  const capitalizedTitle = title
-    .split(" ")
-    .map((str) => {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    })
-    .join(" ");
+export const titulo = (titulo: String) => {
+    const convertirTitulo = titulo.split(" ").map((string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }).join(" ");
 
-  return capitalizedTitle;
+    return convertirTitulo;
+}
+
+export const calcularMinutos = (fecha: Date) => {
+    const ahora = new Date();
+    const minutosTranscurridos = Math.floor(
+        (ahora.getTime() - fecha.getTime()) / 60000
+    );
+    return minutosTranscurridos;
 };
-
-export const calculateMinutes = (date: Date) => {
-  const today = new Date();
-  const minutosTranscurridos = Math.floor(
-    (today.getTime() - date.getTime()) / 60000
-  );
-  return minutosTranscurridos;
-};
-
-//extraemos dos funciones que podemos utilizar en otros componentes

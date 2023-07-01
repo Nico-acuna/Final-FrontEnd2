@@ -1,17 +1,6 @@
 import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
-import {
-  BioContainer,
-  BioDescripcion,
-  BioImagen,
-  BioNombre,
-  BotonBio,
-  ContenedorBotones,
-} from "./styles";
-
-/**
- @returns {JSX.Element}
- */
+import { ContenedorBio, ImagenBio, NombreBio, DescripcionBio, ContenedorBotones, BotonBio } from "./styled";
 
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
@@ -24,9 +13,9 @@ const Bio = () => {
   const crearBotones = () => {
     return Object.keys(INFO_SIMPSONS).map((nombre: string) => (
       <BotonBio
-        active={bioActiva.id === nombre}
         key={nombre as string}
         onClick={() => onClick(nombre as NombresSimpsons)}
+        activo={bioActiva.id === nombre ? true : false}
       >
         {nombre}
       </BotonBio>
@@ -34,18 +23,22 @@ const Bio = () => {
   };
 
   return (
-    <BioContainer>
+    <ContenedorBio>
       <ContenedorBotones>{crearBotones()}</ContenedorBotones>
       <div>
         <div>
-          <BioImagen src={bioActiva.image} alt={bioActiva.nombre} />
+          <ImagenBio
+            src={bioActiva.image}
+            alt={bioActiva.nombre}
+          >
+          </ImagenBio>
         </div>
         <div>
-          <BioNombre>{bioActiva.nombre}</BioNombre>
-          <BioDescripcion>{bioActiva.descripcion}</BioDescripcion>
+          <NombreBio>{bioActiva.nombre}</NombreBio>
+          <DescripcionBio>{bioActiva.descripcion}</DescripcionBio>
         </div>
       </div>
-    </BioContainer>
+    </ContenedorBio>
   );
 };
 
