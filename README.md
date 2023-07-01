@@ -1,8 +1,6 @@
 # ctd-esp-fe2-final
 
-Examen Final de Frontend V 
-
-NICOLAS ACUÑA
+Examen Final de Frontend V
 
 ## Indice
 
