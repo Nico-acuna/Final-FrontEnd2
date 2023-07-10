@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
-import { ContenedorBio, ImagenBio, NombreBio, DescripcionBio, ContenedorBotones, BotonBio } from "./styled";
+import {
+  BioButton,
+  BioButtonWrapper,
+  BioDescripcion,
+  BioImage,
+  BioName,
+  BioWrapper,
+} from "./Bio.styled";
 
+/**
+ * Componente Bio que muestra información biográfica de personajes de Los Simpsons.
+ * @returns {JSX.Element} El componente Bio renderizado.
+ */
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
     INFO_SIMPSONS[NombresSimpsons.BART]
@@ -12,33 +23,29 @@ const Bio = () => {
 
   const crearBotones = () => {
     return Object.keys(INFO_SIMPSONS).map((nombre: string) => (
-      <BotonBio
+      <BioButton
         key={nombre as string}
         onClick={() => onClick(nombre as NombresSimpsons)}
-        activo={bioActiva.id === nombre ? true : false}
+        active={bioActiva.id === nombre}
       >
         {nombre}
-      </BotonBio>
+      </BioButton>
     ));
   };
 
   return (
-    <ContenedorBio>
-      <ContenedorBotones>{crearBotones()}</ContenedorBotones>
+    <BioWrapper>
+      <BioButtonWrapper>{crearBotones()}</BioButtonWrapper>
       <div>
         <div>
-          <ImagenBio
-            src={bioActiva.image}
-            alt={bioActiva.nombre}
-          >
-          </ImagenBio>
+          <BioImage src={bioActiva.image} alt={bioActiva.nombre} />
         </div>
         <div>
-          <NombreBio>{bioActiva.nombre}</NombreBio>
-          <DescripcionBio>{bioActiva.descripcion}</DescripcionBio>
+          <BioName>{bioActiva.nombre}</BioName>
+          <BioDescripcion>{bioActiva.descripcion}</BioDescripcion>
         </div>
       </div>
-    </ContenedorBio>
+    </BioWrapper>
   );
 };
 
